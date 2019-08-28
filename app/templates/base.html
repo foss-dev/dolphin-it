@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Dolphin IT{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.min.css') }}" />
+
+    {% block custom_style %}{% endblock %}
+</head>
+
+<body>
+    <section class="hero">
+
+        {% include "menu.html" %}
+    </section>
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-fluid">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/all.min.js') }}"></script>
+
+    {% block custom_scripts %}{% endblock %}
+</body>
+
+</html>

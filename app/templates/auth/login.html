@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Dolphin IT Login{% endblock %}
+
+{% block content %}
+<div class="columns">
+    <div class="column is-4 is-offset-4">
+        <figure class="image is-3by2">
+            <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Dolphin IT Logo">
+        </figure>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="notification is-{{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <div class="field">
+                <label for="username" class="label">Username</label>
+                <div class="control">
+                    <input id="username" class="input is-dark" type="text" name="username" placeholder="Your Username"
+                        autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label for="password" class="label">Password</label>
+                    <input id="password" class="input is-dark" type="password" name="password"
+                        placeholder="Your Password">
+                </div>
+            </div>
+
+            <div class="field is-pulled-left">
+                <label class="checkbox ">
+                    <input type="checkbox">
+                    Remember me
+                </label>
+            </div>
+
+            <div class="field">
+                <button class="button is-block is-dark is-fullwidth">Login</button>
+            </div>
+
+            <div class="field is-pulled-right">
+                <a href="{{ url_for('auth.register') }}" class="is-size-5 has-text-info">
+                    Register
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block custom_style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="columns">
+    <div class="column is-12">
+        <div class="tabs is-toggle is-fullwidth" id="tabs">
+            <ul>
+                <li data-tab="1">
+                    <a>
+                        <span class="icon "><i class="fa fa-info"></i></span>
+                        <span>Info</span>
+                    </a>
+                </li>
+                <li class="is-active" data-tab="2">
+                    <a>
+                        <span class="icon is-small"><i class="fa fa-users"></i></span>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li data-tab="3">
+                    <a>
+                        <span class="icon is-small"><i class="fa fa-film"></i></span>
+                        <span>Videos</span>
+                    </a>
+                </li>
+                <li data-tab="4">
+                    <a>
+                        <span class="icon is-small"><i class="fa fa-file-text-o"></i></span>
+                        <span>Documents</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="tab-content">
+            <div data-content="1">
+                <div class="columns">
+                    <div class="column is-6">
+                        <table class="table is-bordered is-striped is-hoverable">
+                            <tbody>
+                                <tr>
+                                    <td><strong>DolphinIT Version</strong></td>
+                                    <td>{{ data.version }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>DB Schema Version</strong></td>
+                                    <td>{{ data.db_version }}</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Python Version</strong></td>
+                                    <td>{{ data.py_version }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Database Driver</strong></td>
+                                    <td>{{ data.db_driver }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="column is-6">
+                        <table class="table is-bordered is-striped is-hoverable">
+                            <tbody>
+                                <tr>
+                                    <td><strong>System Path</strong></td>
+                                    <td>{{ data.app_path }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>App Module Path</strong></td>
+                                    <td>{{ data.app_path + '/app/' }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Controllers Path</strong></td>
+                                    <td>{{ data.app_path + '/app/controllers/' }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Static File Path</strong></td>
+                                    <td>{{ data.app_path + '/app/static/' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="is-active" data-content="2">
+                <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>E-mail</th>
+                            <th>Role</th>
+                            <th>Active</th>
+                            <th>Date Created</th>
+                            <th>Date Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in data.users %}
+                            <tr>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ 'Administrator' if user.is_admin else 'User' }}</td>
+                                <td class="has-text-centered"><i class="fa fa-{{ 'check' if user.is_active else 'times' }}"></i></td>
+                                <td>{{ user.created_at }}</td>
+                                <td>{{ user.updated_at }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div data-content="3">
+                Videos
+            </div>
+            <div data-content="4">
+                Documents
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+{% block custom_style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tabs.css') }}">
+{% endblock %}
+
+{% block custom_scripts %}
+<script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
+{% endblock %}

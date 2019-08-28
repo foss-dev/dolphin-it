@@ -1,0 +1,12 @@
+#tab-content > div {
+    display: none;
+}
+
+#tab-content > div.is-active {
+    display: flex;
+}
+
+.tabs.is-toggle li.is-active a {
+    background-color: #34495e;
+    border-color: #34495e;
+}

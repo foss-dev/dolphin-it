@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Dolphin IT Register{% endblock %}
+
+{% block content %}
+<div class="columns">
+    <div class="column is-4 is-offset-4">
+
+        <figure class="image is-3by2">
+            <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Dolphin IT Logo">
+        </figure>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="notification is-{{ category }}">
+            {{ message }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('auth.register') }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+            <div class="field">
+                <label for="name" class="label">Your Name</label>
+                <div class="control">
+                    <input id="name" class="input is-dark" type="text" name="name" placeholder="Your Name" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="email" class="label">E-Mail</label>
+                <div class="control">
+                    <input id="email" class="input is-dark" type="email" name="email" placeholder="Your E-Mail">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label for="username" class="label">Username</label>
+                    <input id="username" class="input is-dark" type="text" name="username" placeholder="Your Username">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <label for="password" class="label">Your Name</label>
+                    <input id="password" class="input is-dark" type="password" name="password"
+                        placeholder="Your Password">
+                </div>
+            </div>
+
+            <div class="field">
+                <button class="button is-block is-dark is-fullwidth">Register</button>
+            </div>
+
+            <div class="field is-pulled-right">
+                <a href="{{ url_for('auth.login') }}" class="is-size-5 has-text-info">
+                    Login
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block custom_style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}

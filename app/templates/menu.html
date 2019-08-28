@@ -1,0 +1,37 @@
+<div class="hero-head">
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('system.index') }}" class="navbar-item">
+                        System
+                    </a>
+                    {% endif %}
+                    
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('auth.profile') }}" class="navbar-item">
+                        Profile
+                    </a>
+                    {% endif %}
+                    
+                    {% if not current_user.is_authenticated %}
+                    <a href="{{ url_for('auth.login') }}" class="navbar-item">
+                        Login
+                    </a>
+                    <a href="{{ url_for('auth.register') }}" class="navbar-item">
+                        Register
+                    </a>
+                    {% endif %}
+                    
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('auth.logout') }}" class="navbar-item">
+                        Logout
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
