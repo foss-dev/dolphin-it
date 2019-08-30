@@ -10,6 +10,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(150))
     name = db.Column(db.String(300))
     is_admin = db.Column(db.Boolean(), default=False)
+    access_level = db.Column(db.Integer, default=10)
     is_active = db.Column(db.Boolean(), default=True)
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now())

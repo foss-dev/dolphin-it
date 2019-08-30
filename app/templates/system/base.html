@@ -1,0 +1,32 @@
+<ul>
+    <li class="{{ 'is-active' if page == 'system' else '' }}" data-tab="1">
+        <a href="{{ url_for('system.index') }}">
+            <span class="icon "><i class="fa fa-info"></i></span>
+            <span>Info</span>
+        </a>
+    </li>
+    <li class="{{ 'is-active' if page == 'users' else '' }}" data-tab="2">
+        <a href="{{ url_for('system.users') }}">
+            <span class="icon is-small"><i class="fa fa-users"></i></span>
+            <span>Users</span>
+        </a>
+    </li>
+    <li data-tab="3">
+        <a href="{{ url_for('system.projects') }}">
+            <span class="icon is-project"><i class="fa fa-film"></i></span>
+            <span>Projects</span>
+        </a>
+    </li>
+    <li data-tab="4">
+        <a href="{{ url_for('system.tags') }}">
+            <span class="icon is-small"><i class="fa fa-file-text-o"></i></span>
+            <span>Tags</span>
+        </a>
+    </li>
+    <li data-tab="4">
+        <a href="{{ url_for('system.roles') }}">
+            <span class="icon is-small"><i class="fa fa-file-text-o"></i></span>
+            <span>Roles</span>
+        </a>
+    </li>
+</ul>
