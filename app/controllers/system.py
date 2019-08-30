@@ -15,8 +15,6 @@ system = Blueprint('system', __name__)
 @decorators.admin_required
 def index():
 
-    
-
     data = {
         "version": current_app.config.get('DOLPHINIT_VERSION'), 
         "db_version": current_app.config.get('DOLPHINITDB_VERSION'),

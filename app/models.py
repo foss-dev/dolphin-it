@@ -14,3 +14,8 @@ class User(UserMixin, db.Model):
     is_active = db.Column(db.Boolean(), default=True)
     created_at = db.Column(db.DateTime, default=db.func.now())
     updated_at = db.Column(db.DateTime, default=db.func.now())
+
+
+class AccessLevel(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    level_name = db.Column(db.String(150), unique=True)
