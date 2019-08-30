@@ -1,0 +1,50 @@
+<div class="columns">
+    <div class="column is-6">
+        <table class="table is-bordered is-striped is-hoverable">
+            <tbody>
+                <tr>
+                    <td><strong>DolphinIT Version</strong></td>
+                    <td>{{ data.version }}</td>
+                </tr>
+                <tr>
+                    <td><strong>DB Schema Version</strong></td>
+                    <td>{{ data.db_version }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><strong>Python Version</strong></td>
+                    <td>{{ data.py_version }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Database Driver</strong></td>
+                    <td>{{ data.db_driver }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="column is-6">
+        <table class="table is-bordered is-striped is-hoverable">
+            <tbody>
+                <tr>
+                    <td><strong>System Path</strong></td>
+                    <td>{{ data.app_path }}</td>
+                </tr>
+                <tr>
+                    <td><strong>App Module Path</strong></td>
+                    <td>{{ data.app_path + '/app/' }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Controllers Path</strong></td>
+                    <td>{{ data.app_path + '/app/controllers/' }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Static File Path</strong></td>
+                    <td>{{ data.app_path + '/app/static/' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
