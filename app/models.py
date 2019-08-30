@@ -19,3 +19,6 @@ class User(UserMixin, db.Model):
 class AccessLevel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     level_name = db.Column(db.String(150), unique=True)
+
+class Roles(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
